@@ -1,0 +1,58 @@
+\documentclass[fontsize=12pt, twoside=false, secnumdepth=1]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[german]{babel}
+\usepackage{emoji}
+\usepackage{csquotes}
+%\usepackage{etoolbox}
+\usepackage{parskip}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+\urlstyle{same}
+\definecolor{DarkBlue}{rgb}{0.05,0.05,0.35}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    linkcolor=DarkBlue,
+}
+\AddToHook{cmd/section/before}{\clearpage}
+
+% \leolink{de}{Donnerwetter}
+% \leolink{en}{thunderstorm} ..
+\newcommand{\leolink}[2]{
+\def\dstlang{englisch}
+\ifstrequal{#1}{en}{\def\srcflag{uk}\def\tgtflag{de}\def\dstlang{englisch}}{}
+\ifstrequal{#1}{de}{\def\srcflag{de}\def\tgtflag{uk}\def\dstlang{englisch}}{}
+\ifstrequal{#1}{it}{\def\srcflag{it}\def\tgtflag{de}\def\dstlang{italienisch}}{}
+\ifstrequal{#1}{fr}{\def\srcflag{fr}\def\tgtflag{de}\def\dstlang{franz\%C3\%B6sisch}}{}
+\emoji{\srcflag} \href{https://dict.leo.org/\dstlang-deutsch/#2}{#2} \emoji{\tgtflag} \emoji{lion}
+}
+\newcommand{\vocabularyheader}{\hline\emoji{grinning-face} & \emoji{de} & \emoji{uk} & \emoji{fr} & \emoji{it} \\\hline}
+\newcommand{\vocabulary}[5]{\emoji{#1} & #2 & #3 & #4 & #5 \\}
+\newcommand{\vocnum}[5]{#1 & #2 & #3 & #4 & #5 \\}
+
+\begin{document}
+
+\section*{Language learning with emoji -- Intro}
+\input{introduction}
+\tableofcontents
+
+
+%\mainmatter
+%\setchapterstyle{kao}
+% \pagelayout{wide} % No margins
+% \pagelayout{margin} % Restore margins
+
+\section{Emoji Grundwortschatz - basic vocabulary - vocabulaire de base - vocabolario di base}
+\input{basic-vocabulary}
+
+\section{Artikel - articles - articles - articoli}
+\input{articles}
+
+\section{Zahlen - numbers - nombres - nummeri}
+\input{numbers}
+
+\section{Conjugaison de verbes}
+\input{conjugaison-verbes}
+
+\end{document}
